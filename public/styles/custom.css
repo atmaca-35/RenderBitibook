@@ -1,0 +1,67 @@
+.custom-toolbar {
+  background-color: #1f1f1f;
+  border: 1px solid #1f1f1f;
+  border-radius: 15px;
+}
+
+.custom-button {
+  margin-top: 1rem;
+  background-color: #1f1f1f;
+  color: #32cd32;
+  border: 2px solid #32cd32;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  outline: none; /* Remove default focus outline */
+}
+
+.custom-button:focus,
+.custom-button:hover {
+  background-color: #32cd32;
+  color: #1f1f1f;
+  border-color: #1f1f1f;
+}
+
+#editor-container {
+  height: 200px;
+}
+
+.word-title {
+  color: #e9d677;
+}
+
+.word-container {
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 2px solid #32cd32; /* Border width, style, and color */
+}
+
+.disabled-button {
+  pointer-events: none; /* Make the button non-clickable */
+  opacity: 0.6; /* Optional: Make the button slightly transparent to indicate it's disabled */
+  cursor: not-allowed; /* Optional: Change the cursor to indicate the button is not clickable */
+}
+
+.ql-color .ql-picker-options [data-value="color-picker"]:before {
+  content: "Pick Color";
+}
+
+.ql-color .ql-picker-options [data-value="color-picker"] {
+  background: none !important;
+  width: 100% !important;
+  height: 25px !important;
+  text-align: center;
+  color: blue;
+  text-decoration: underline;
+}
+
+.common-font-color {
+  color: #32cd32;
+}
+
+.unclickable {
+  pointer-events: none;
+  cursor: default;
+}

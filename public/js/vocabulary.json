@@ -1,0 +1,132 @@
+{
+  "specialWords": {
+    "ppt": "Pre-Proto-Turkish",
+    "ptr": "Proto-Turkish",
+    "bgx": "Balkan Gagauz Turkish",
+    "kmz": "Khorasani Turkish",
+    "ota": "Ottoman Turkish",
+    "otk": "Orkhon Turkic",
+    "tur": "Turkish",
+    "crh": "Crimean Turkish",
+    "sah": "Yakut",
+    "ybe": "West Yugur",
+    "tuk": "Turkmen",
+    "xng": "Middle Mongolian",
+    "mon": "Mongolian",
+    "cmg": "Classical Mongolian"
+  },
+  "clickableWords": {
+    "*+ŕ": [
+      [
+        "<span class='yellow'>verb</span> *ag-",
+        "<span class='gray'>“to rise”</span>",
+        "<span class='yellow'>noun</span> *agïŕ",
+        "<span class='gray'>“mouth”</span>"
+      ],
+      [
+        "<span class='yellow'>verb</span> *bog-",
+        "<span class='gray'>“to choke”</span>",
+        "<span class='yellow'>noun</span> *boguŕ",
+        "<span class='gray'>“throat”</span>"
+      ]
+    ],
+    "*+gAk": [
+      [
+        "<span class='yellow'>verb</span> *dam-",
+        "<span class='gray'>“to drip”</span>",
+        "<span class='yellow'>noun</span> *damgak",
+        "<span class='gray'>“throat”</span>"
+      ],
+      [
+        "<span class='yellow'>verb</span> *or-",
+        "<span class='gray'>“to mow, reap”</span>",
+        "<span class='yellow'>noun</span> *orgak",
+        "<span class='gray'>“sickle”</span>"
+      ]
+    ],
+    "*+sA-": [
+      [
+        "<span class='yellow'>noun</span> *yük",
+        "<span class='gray'>“load”</span>",
+        "<span class='yellow'>verb</span> *yükse-",
+        "<span class='gray'>“to rise”</span>"
+      ],
+      [
+        "<span class='yellow'>noun</span> *kāp",
+        "<span class='gray'>“vessel”</span>",
+        "<span class='yellow'>verb</span> *kapsa-",
+        "<span class='gray'>“to include”</span>"
+      ]
+    ],
+    "*+I-": [
+      [
+        "<span class='yellow'>noun</span> *yabïŕ",
+        "<span class='gray'>“bad”</span>",
+        "<span class='yellow'>verb</span> *yabrï-",
+        "<span class='gray'>“to deteriorate”</span>"
+      ],
+      [
+        "<span class='yellow'>noun</span> *sékiŕ",
+        "<span class='gray'>“alive”</span>",
+        "<span class='yellow'>verb</span> *sékri-",
+        "<span class='gray'>“to splash”</span>"
+      ]
+    ],
+    "*+g": [
+      [
+        "<span class='yellow'>verb</span> *āčï-",
+        "<span class='gray'>“to pity, to hurt, become sour”</span>",
+        "<span class='yellow'>noun</span> *āčïg",
+        "<span class='gray'>“pain, ache, bitter”</span>"
+      ],
+      [
+        "<span class='yellow'>verb</span> *yalïn-",
+        "<span class='gray'>“be isolated”</span>",
+        "<span class='yellow'>noun</span> *yalïŋ",
+        "<span class='gray'>“lonely”</span>"
+      ]
+    ],
+    "*+l-": [
+      [
+        "<span class='yellow'>verb</span> *adïr-",
+        "<span class='gray'>“to divide, separate”</span>",
+        "<span class='yellow'>verb</span> *adrïl-",
+        "<span class='gray'>“to leave”</span>"
+      ],
+      [
+        "<span class='yellow'>verb</span> *tēr-",
+        "<span class='gray'>“to gather”</span>",
+        "<span class='yellow'>verb</span> *tēril-",
+        "<span class='gray'>“to be gathered”</span>"
+      ]
+    ],
+    "*+k-": [
+      [
+        "<span class='yellow'>verb</span> *ạ̄č-",
+        "<span class='gray'>“to hunger”</span>",
+        "<span class='yellow'>verb</span> *ạ̄čïk-",
+        "<span class='gray'>“to be hungry, to hunger”</span>"
+      ],
+      [
+        "<span class='yellow'>verb</span> *si-",
+        "<span class='gray'>“to urinate”</span>",
+        "<span class='yellow'>verb</span> *sik-",
+        "<span class='gray'>“to copulate”</span>"
+      ]
+    ],
+    "*+k": [
+      [
+        "<span class='yellow'>verb</span> *ač-",
+        "<span class='gray'>“to open”</span>",
+        "<span class='yellow'>noun</span> *ačuk",
+        "<span class='gray'>“open”</span>"
+      ],
+      [
+        "<span class='yellow'>verb</span> *sā-",
+        "<span class='gray'>“to think, count, regard”</span>",
+        "<span class='yellow'>noun</span> *sāk",
+        "<span class='gray'>“aware, alert”</span>"
+      ]
+    ]
+  }
+}

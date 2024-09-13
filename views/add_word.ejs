@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Word</title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/custom.css" />
+    <link rel="icon" href="logo.ico" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Poppins:400,700,900");
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="search-container">
+          <div id="errorContainer"></div>
+          <p id="wordCount" class="word-count"></p>
+
+          <div>
+            <h3 class="common-font-color">Word</h3>
+          </div>
+
+          <div class="search-box" style="margin-top: 1rem">
+            <input type="text" id="word-inp" />
+            <span id="ghostText" class="ghost-text"></span>
+          </div>
+
+          <div style="margin-top: 1rem">
+            <h3 class="common-font-color">Content</h3>
+          </div>
+
+          <div
+            id="editor-wrapper"
+            class=""
+            style="margin-top: 1rem; border-radius: 1rem"
+          >
+            <div
+              id="editor"
+              style="
+                border-radius: 15px;
+                border-color: #1f1f1f;
+                background-color: #1f1f1f;
+                margin-top: 1rem;
+                height: 100px;
+                caret-color: green;
+                font-size: 16px;
+              "
+            ></div>
+          </div>
+
+          <div style="margin-top: 1rem">
+            <h3 class="common-font-color">Related Words ( See )</h3>
+            <label> Separate with comma like: ayak, dirimek</label>
+          </div>
+
+          <div class="search-box" style="margin-top: 1rem">
+            <input type="text" id="related-words" />
+            <span id="ghostText" class="ghost-text"></span>
+          </div>
+
+          <div id="btn-wrapper">
+            <button id="submit-btn" class="custom-button">ADD</button>
+          </div>
+        </div>
+        <div class="result" id="result"></div>
+      </div>
+    </main>
+
+    <script src="/js/api.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+
+    <script>
+      var quill = new Quill("#editor", {
+        modules: {
+          toolbar: [
+            [
+              {
+                header: [1, 2, false],
+              },
+            ],
+            ["bold", "italic", "underline"],
+            ["image", "code-block"],
+            [
+              {
+                color: [
+                  "#F00",
+                  "#000",
+                  "#e9d677",
+                  "#32CD32",
+                  "#DE7C98",
+                  "color-picker",
+                ],
+              },
+            ],
+          ],
+        },
+        placeholder: "Compose an epic...",
+        theme: "snow", // or 'bubble'
+      });
+
+      function showColorPicker(value) {
+        if (value === "color-picker") {
+          var picker = document.getElementById("color-picker");
+          if (!picker) {
+            picker = document.createElement("input");
+            picker.id = "color-picker";
+            picker.type = "color";
+            picker.style.display = "none";
+            picker.value = "#FF0000";
+            document.body.appendChild(picker);
+
+            picker.addEventListener(
+              "change",
+              function () {
+                quill.format("color", picker.value);
+              },
+              false
+            );
+          }
+          picker.click();
+        } else {
+          quill.format("color", value);
+        }
+      }
+
+      var toolbar = quill.getModule("toolbar");
+      toolbar.addHandler("color", showColorPicker);
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const btn = document.getElementById("submit-btn");
+
+        btn.addEventListener("click", async (e) => {
+          const auth = localStorage.getItem("auth");
+
+          let username;
+          let password;
+
+          if (!auth) {
+            username = prompt("Username");
+            password = prompt("Password");
+          } else {
+            username = JSON.parse(localStorage.getItem("auth")).username;
+            password = JSON.parse(localStorage.getItem("auth")).password;
+          }
+
+          const word = document.getElementById("word-inp");
+
+          const desc = quill.root.innerHTML;
+
+          const related_words = document.getElementById("related-words");
+
+          const data = {
+            user: { username, password },
+            word: word.value,
+            description: desc,
+            related_words: related_words.value.split(","),
+          };
+
+          btn.classList.add("disabled-button");
+
+          saveWord(data)
+            .then((response) => {
+              if (response != 403) {
+                localStorage.setItem(
+                  "auth",
+                  JSON.stringify({ username, password })
+                );
+              }
+
+              switch (response) {
+                case 400:
+                  alert("Validation error. Check your input values.");
+                  break;
+
+                case 404:
+                  alert("Word does already exist.");
+                  break;
+
+                case 403:
+                  alert("Incorrect username or password.");
+                  break;
+
+                case 500:
+                  alert("An internal server error occured.");
+                  break;
+
+                default:
+                  alert("Word persisted.");
+              }
+            })
+            .finally(() => {
+              btn.classList.remove("disabled-button");
+            });
+        });
+
+        var toolbar = document.querySelector(".ql-toolbar.ql-snow");
+        if (toolbar) {
+          toolbar.style.backgroundColor = "#1f1f1f";
+          toolbar.style.border = "1px solid #1f1f1f";
+          toolbar.style.borderRadius = "15px";
+        }
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.9/purify.min.js"></script>
+  </body>
+</html>
